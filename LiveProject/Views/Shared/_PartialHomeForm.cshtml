@@ -1,0 +1,198 @@
+﻿@model LiveProject.Models.CustDetail
+
+@{ var titleItems = new List<SelectListItem>
+    {
+    new SelectListItem { Text = "Select.", Value = "1", Selected = true },
+    new SelectListItem { Text = "Mr.", Value = "2", Selected = true },
+    new SelectListItem { Text = "Miss.", Value = "3", Selected = true },
+    new SelectListItem { Text = "Mrs.", Value = "4", Selected = true }};
+    ViewBag.TitleItems = titleItems;
+}
+
+@{   var LookingFor = new List<SelectListItem>
+        {
+        new SelectListItem { Text = "Select.", Value = "1", Selected = true },
+        new SelectListItem { Text = "Residential Remortgage", Value = "2", Selected = true },
+        new SelectListItem { Text = "Residentisl Purchase", Value = "3", Selected = true },
+        new SelectListItem { Text = "Buy To Let Remortgage", Value = "4", Selected = true },
+        new SelectListItem { Text = "Buy To Let Purchase", Value = "5", Selected = true },
+        new SelectListItem { Text = "Others", Value = "6", Selected = true }
+        };
+    ViewBag.LookingFor = LookingFor;
+}
+
+@{ var Term = new List<SelectListItem>
+            {
+            new SelectListItem { Text = "Select.", Value = "1", Selected = true },
+            new SelectListItem { Text = "5 Year", Value = "2", Selected = true },
+            new SelectListItem { Text = "6 Year", Value = "3", Selected = true },
+            new SelectListItem { Text = "7 Year", Value = "4", Selected = true },
+            new SelectListItem { Text = "8 Year", Value = "5", Selected = true },
+            new SelectListItem { Text = "9 Year", Value = "6", Selected = true },
+            new SelectListItem { Text = "10 Year", Value = "7", Selected = true },
+            new SelectListItem { Text = "11 Year", Value = "8", Selected = true },
+            new SelectListItem { Text = "12 Year", Value = "10", Selected = true },
+            new SelectListItem { Text = "13 Year", Value = "11", Selected = true },
+            new SelectListItem { Text = "14 Year", Value = "12", Selected = true },
+            new SelectListItem { Text = "15 Year", Value = "13", Selected = true },
+            new SelectListItem { Text = "16 Year", Value = "14", Selected = true },
+            new SelectListItem { Text = "17 Year", Value = "15", Selected = true },
+            new SelectListItem { Text = "18 Year", Value = "16", Selected = true },
+            new SelectListItem { Text = "19 Year", Value = "17", Selected = true },
+            new SelectListItem { Text = "20 Year", Value = "18", Selected = true },
+            new SelectListItem { Text = "21 Year", Value = "19", Selected = true },
+            new SelectListItem { Text = "22 Year", Value = "20", Selected = true },
+            new SelectListItem { Text = "23 Year", Value = "21", Selected = true },
+            new SelectListItem { Text = "24 Year", Value = "22", Selected = true },
+            new SelectListItem { Text = "26 Year", Value = "23", Selected = true },
+            new SelectListItem { Text = "27 Year", Value = "24", Selected = true },
+            new SelectListItem { Text = "28 Year", Value = "25", Selected = true },
+            new SelectListItem { Text = "29 Year", Value = "26", Selected = true },
+            new SelectListItem { Text = "30 Year", Value = "27", Selected = true },
+            new SelectListItem { Text = "31 Year", Value = "28", Selected = true },
+            new SelectListItem { Text = "32 Year", Value = "29", Selected = true },
+            new SelectListItem { Text = "33 Year", Value = "30", Selected = true },
+            new SelectListItem { Text = "34 Year", Value = "31", Selected = true },
+            new SelectListItem { Text = "35 Year", Value = "32", Selected = true },
+            new SelectListItem { Text = "36 Year", Value = "33", Selected = true },
+            new SelectListItem { Text = "37 Year", Value = "34", Selected = true },
+            new SelectListItem { Text = "38 Year", Value = "35", Selected = true },
+            new SelectListItem { Text = "39 Year", Value = "36", Selected = true },
+            new SelectListItem { Text = "40 Year", Value = "37", Selected = true } };
+            ViewBag.Term = Term;
+}
+@{
+    var RateType = new List<SelectListItem>
+                {
+                new SelectListItem { Text = "Select", Value = "1", Selected = true },
+                new SelectListItem { Text = "Fixed", Value = "2", Selected = true },
+                new SelectListItem { Text = "Tracker", Value = "3", Selected = true },
+                new SelectListItem { Text = "Variable", Value = "4", Selected = true },
+                new SelectListItem { Text = "NotSure", Value = "5", Selected = true }};
+    ViewBag.RateType = RateType;
+}
+
+@*return View(model); }*@
+
+
+
+@using (Html.BeginForm("Cust", "Home", FormMethod.Post, new { @id = "homeForm", @novalidate = "" }))
+{
+    <div class="col-md-6 res_section3">
+        <div class="col-sm-4 col-xs-4 res_section3">
+            @Html.LabelFor(m => m.Title)
+            @Html.DropDownListFor(m => m.Title, ViewBag.TitleItems as List<SelectListItem>, new { @class = "inputform", @style = "padding:5px 1px;" })
+        </div>
+        <div class="col-sm-8 col-xs-8 res_section2">
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "inputform", @data_validation = "required" })
+
+        </div>
+        <div class="clr"></div>
+    </div>
+                    <div class="col-sm-6 res_section3">
+
+                        @Html.LabelFor(m => m.LastName)
+                        @Html.TextBoxFor(m => m.LastName, new { @class = "inputform", @data_validation = "required" })
+                    </div>
+                    <div class="clr"></div>
+                    <div class="col-sm-6 res_section3">
+
+                        @Html.LabelFor(m => m.Gender)
+                        Male: @Html.RadioButtonFor(m => m.Gender, "Male")
+                        Female: @Html.RadioButtonFor(m => m.Gender, "Female")
+                    </div>
+                    <div class="clr"></div>
+
+                    <div class="col-sm-6 res_section3">
+                        @Html.LabelFor(m => m.MobileNumber)
+                        @Html.TextBoxFor(model => model.MobileNumber, new { @class = "Form-Control" })
+
+                    </div>
+                    <div class="col-sm-6 res_section3">
+                        @Html.LabelFor(m => m.AlternativeNumber)
+                        @Html.TextBoxFor(model => model.AlternativeNumber, new { @class = "Form-Control" })
+
+                    </div>
+                    <div class="clr"></div>
+
+                    <div class="col-sm-6 res_section3">
+                        @Html.LabelFor(m => m.EmailAddress)
+                        @Html.TextBoxFor(model => model.EmailAddress, new { @class = "Form-Control" })
+                    </div>
+                    <div class="col-sm-6 res_section3">
+                        @Html.LabelFor(m => m.PostCode)
+                        @Html.TextBoxFor(model => model.PostCode, new { @class = "Form-Control" })
+                    </div>
+                    <div class="clr"></div>
+
+                    <div class="col-sm-6 res_section3">
+                        @Html.LabelFor(m => m.Housenameornumber)
+                        @Html.TextBoxFor(model => model.Housenameornumber, new { @class = "Form-Control" })
+                    </div>
+                    <div class="col-sm-6 res_section3">
+
+                        @Html.LabelFor(m => m.LookingFor)
+                        @Html.DropDownListFor(m => m.LookingFor, ViewBag.LookingFor as List<SelectListItem>)
+
+                    </div>
+                    <div class="clr"></div>
+
+                    <div class="col-sm-6 res_section3">
+                        @Html.LabelFor(m => m.ValueOfTheProperty)
+                        @Html.TextBoxFor(model => model.ValueOfTheProperty, new { @class = "Form-Control" })
+                    </div>
+                    <div class="col-sm-6 res_section3">
+                        @Html.LabelFor(m => m.MorttgageAmount)
+                        @Html.TextBoxFor(model => model.MorttgageAmount, new { @class = "Form-Control" })
+                    </div>
+
+                    <div class="clr"></div>
+
+                    <div class="col-sm-6 res_section3">
+
+                        @Html.LabelFor(m => m.Term)
+                        @Html.DropDownListFor(m => m.Term, ViewBag.Term as List<SelectListItem>)
+                    </div>
+                    <div class="clr"></div>
+                    <div class="col-sm-6 res_section3">
+
+                        @Html.LabelFor(m => m.TypeOfRate)
+                        @Html.DropDownListFor(m => m.TypeOfRate, ViewBag.RateType as List<SelectListItem>)
+                    </div>
+                    <div class="missed_div">
+                        <div class="col-sm-10" style="padding-left:0;">
+                            <p>
+                                I have missed a mortgage or loan repayment in the past 36 months or been declared bankrupt, had CCJ’s, Defaults or entered
+                                into an IVA in the past 6 years?
+                            </p>
+                        </div>
+                        <div class="col-sm-2 no-padding">
+                            @*<select class="inputformNo" name="AdverseCredit" id="AdverseCredit" type="select-one">
+                                    <option value="false">No </option>
+                                    <option value="true">yes</option>
+                                </select>*@
+
+                        </div>
+
+
+                        <div class="clr"></div>
+
+                    </div>
+                    <div class="send_req">
+                        <div class="submit_buttonnew" style="display:none;">Submit</div>
+                        <input type="submit" id="homeFormSubmit" class="submit_buttonnew" value="Submit">
+
+
+                    </div>
+
+                    <p>
+                        By using this form you are consenting to your information being passed to a mortgage broker or appointed representative who
+                        will contact you. This information may be used by us or selected partners to advise you of other useful products
+                        or services that we feel you would be interested in.
+                    </p>
+}
+
+
+
+

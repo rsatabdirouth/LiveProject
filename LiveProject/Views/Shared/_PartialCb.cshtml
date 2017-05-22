@@ -1,0 +1,63 @@
+﻿@model LiveProject.Models.RequestaCallBack
+
+@{
+    var BestTimeToCall = new List<SelectListItem> {
+                                       new SelectListItem { Text = "Select", Value = "1", Selected = true },
+                                       new SelectListItem { Text = "Morning", Value = "2", Selected = true },
+                                       new SelectListItem { Text = "Afternoon", Value = "3", Selected = true },
+                                       new SelectListItem { Text = "Evening", Value = "4", Selected = true },
+                                       new SelectListItem { Text = "Anytime", Value = "5", Selected = true }};
+    ViewBag.BestTimeToCall = BestTimeToCall;
+}
+<!--request_call_back popup-->
+
+<div class="modal fade" id="requestCallModal" role="dialog">
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            @using (Html.BeginForm("RequestCallBack", "Home", FormMethod.Post, new { @id = "requestCallForm", @novalidate = "" }))
+            {
+
+                <div class="modal-header">
+                    <button type="button" class="close_button" data-dismiss="modal"><img src=@Url.Content("~/Content/img/close.png") alt="close"></button>
+                    <h4 class="modal-title">Request a call back</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-sm-6 from_detailTextres">
+                        @Html.LabelFor(m => m.Name)
+                        @Html.TextBoxFor(m => m.Name, new { @class = "Form-Control" })
+                    </div>
+                    <div class="col-sm-6 from_detailTextres">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, new { @class = "Form-Control" })
+                    </div>
+                    <div class="clr"></div>
+
+                    <div class="col-sm-6 from_detailTextres">
+                        @Html.LabelFor(m => m.Phone)
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "Form-Control" })
+                    </div>
+                    <div class="col-sm-6 from_detailTextres">
+                        @Html.LabelFor(m => m.BestTimeToCall)
+                        @Html.DropDownListFor(m => m.BestTimeToCall, ViewBag.BestTimeToCall as List<SelectListItem>, new { @class = "Form-control" })
+                    </div>
+                    <div class="clr"></div>
+                    <input type="hidden" id="LeadCategory" name="LeadCategory" value="3">
+                    <div class="popup_botton_div">
+                        <div class="btnName" style="display:none;">Call me back</div>
+                        <input type="submit" id="requestSubmit" class="submit_button" value="Call me back">
+                    </div>
+                </div>
+                    <div class="modal-body2" style="display:none">
+                        <img src=@Url.Content("~/Content/img/susic.png") alt="" class="" />
+                        <h3>Message sent successfully </h3>
+                    </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<!--End request_call_back popup-->
